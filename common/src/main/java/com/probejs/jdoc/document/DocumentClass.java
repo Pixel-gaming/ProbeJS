@@ -2,6 +2,7 @@ package com.probejs.jdoc.document;
 
 import com.google.gson.JsonObject;
 import com.probejs.info.ClassInfo;
+import com.probejs.info.type.InfoTypeResolver;
 import com.probejs.jdoc.Serde;
 import com.probejs.jdoc.property.PropertyType;
 
@@ -57,6 +58,7 @@ public class DocumentClass extends AbstractDocument<DocumentClass> {
         document.isInterface = info.isInterface();
         document.parent = info.getSuperClass() != null ? Serde.deserializeFromJavaType(info.getSuperClassType()) : null;
         document.interfaces.addAll(info.getInterfaceTypes().stream().map(Serde::deserializeFromJavaType).toList());
+        document.interfaces.add(Serde.deserializeFromJavaType(InfoTypeResolver.resolveType(Object.class)));
         document.generics.addAll(info.getParameters().stream().map(Serde::deserializeFromJavaType).toList());
         info.getFieldInfo().stream().map(DocumentField::fromJava).forEach(document.fields::add);
         info.getMethodInfo().stream().map(DocumentMethod::fromJava).forEach(document.methods::add);

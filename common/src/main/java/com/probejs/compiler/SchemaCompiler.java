@@ -20,6 +20,7 @@ public class SchemaCompiler {
 
     public static JsonObject toLangSchema() {
         JsonObject properties = new JsonObject();
+        /*
         if (Language.getInstance() instanceof ClientLanguage clientLanguage) {
             clientLanguage.storage
                     .entrySet()
@@ -34,6 +35,7 @@ public class SchemaCompiler {
                         properties.add(entry.getKey(), typeString);
                     });
         }
+        */
         JsonObject schema = new JsonObject();
         schema.addProperty("type", "object");
         schema.add("properties", properties);

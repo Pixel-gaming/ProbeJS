@@ -46,8 +46,8 @@ public class SpecialCompiler {
         formatters.add(new FormatterMod());
         formatters.add(new FormatterIngredient());
         formatters.add(new FormatterRecipeId());
-        formatters.add(new FormatterLang());
-        formatters.add(new FormatterTexture());
+//        formatters.add(new FormatterLang());
+//        formatters.add(new FormatterTexture());
         formatters.addAll(getTagFormatters());
         formatters.addAll(PlatformSpecial.INSTANCE.get().getPlatformFormatters());
         formatters.addAll(specialCompilers);

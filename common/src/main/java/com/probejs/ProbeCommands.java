@@ -50,7 +50,7 @@ public class ProbeCommands {
                 Commands.literal("probejs")
                         .then(Commands.literal("dump")
                                 //SINGLE PLAYER IS NEEDED
-                                .requires(source -> source.getServer().isSingleplayer() && source.hasPermission(2))
+                                .requires(source -> source.hasPermission(2))
                                 .executes(context -> {
                                     COMMAND_LEVEL = context.getSource().getLevel();
                                     Instant start = Instant.now();
@@ -81,7 +81,6 @@ public class ProbeCommands {
                                     return Command.SINGLE_SUCCESS;
                                 }))
                         .then(Commands.literal("clear_cache")
-                                .requires(source -> source.getServer().isSingleplayer())
                                 .executes(context -> {
                                     for (File file : Objects.requireNonNull(ProbePaths.CACHE.toFile().listFiles())) {
                                         if (file.isFile()) {
@@ -95,7 +94,6 @@ public class ProbeCommands {
                                     return Command.SINGLE_SUCCESS;
                                 }))
                         .then(Commands.literal("configure")
-                                .requires(source -> source.getServer().isSingleplayer())
                                 .then(Commands.literal("toggle_bean")
                                         .executes(context -> {
                                             ProbeConfig.INSTANCE.dumpMethod = !ProbeConfig.INSTANCE.dumpMethod;
@@ -127,7 +125,6 @@ public class ProbeCommands {
                                         }))
                         )
                         .then(Commands.literal("export")
-                                .requires(source -> source.getServer().isSingleplayer())
                                 .then(Commands.argument("className", StringArgumentType.string())
                                         .suggests((ctx, builder) -> SharedSuggestionProvider.suggest(
                                                 ClassInfo.CLASS_CACHE

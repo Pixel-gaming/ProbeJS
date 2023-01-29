@@ -21,9 +21,10 @@ public class ClassResolver {
     }
 
     public static void init() {
-        skipClass(Object.class);
+//        skipClass(Object.class);
         skipClass(Void.class, Void.TYPE);
-        skipClass(String.class, Character.class, Character.TYPE);
+        skipClass(String.class);
+        skipClass(Character.class, Character.TYPE);
         skipClass(Long.class, Long.TYPE);
         skipClass(Integer.class, Integer.TYPE);
         skipClass(Short.class, Short.TYPE);
